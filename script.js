@@ -45,4 +45,33 @@ const firstTri = new Triangle(3, 4);
 firstTri.getHypotenuse(); // 5
 firstTri.getArea(); // 6
 
-const badTri = new Triangle(-4, 10); // Uncaught Error: Invalid a: -4
+// const badTri = new Triangle(-4, 10); // Uncaught Error: Invalid a: -4
+
+// Practice
+class BankAccount {
+  constructor(accountNumber, accountHolder, balance = 0) {
+    this.accountHolder = accountHolder;
+    this.accountNumber = accountNumber;
+    this.balance = balance;
+  }
+
+  deposit(amount) {
+    if (amount < 0) return `Can't deposit a negative amount!`;
+    this.balance += amount;
+    return `Deposited $${amount}. New balance: $${this.balance}`;
+  }
+
+  withdraw(amount) {
+    if (amount > this.balance) return "Insufficient funds";
+    this.balance -= amount;
+    return `Withdrawed $${amount}. New balance: $${this.balance}`;
+  }
+}
+
+const anilAccount = new BankAccount("23anil", "Anil Beter");
+console.log(anilAccount);
+console.log(anilAccount.deposit(100)); // Deposited $100. New balance: $100
+console.log(anilAccount.deposit(200)); // Deposited $200. New balance: $300
+console.log(anilAccount.withdraw(500)); // Insufficient funds
+console.log(anilAccount.withdraw(150)); // Withdrawed $150. New balance: $150
+console.log(anilAccount.deposit(-23)); // Can't deposit a negative amount!
