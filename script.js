@@ -1,24 +1,24 @@
-const pet = {
-  species: "Dog",
-  name: "Elton",
-  age: 1.5,
+// Area of right triangle
+function getTriangleArea(a, b) {
+  return (a * b) / 2;
+}
+
+// Hypotenuse of right triangle
+const getTriangleHypotenuse = (a, b) => Math.sqrt(a ** 2 + b ** 2);
+
+// Combine them in an object
+let myTri = {
+  a: 3,
+  b: 4,
+
+  getArea() {
+    return (this.a * this.b) / 2;
+  },
+
+  getHypotenuse() {
+    return Math.sqrt(this.a ** 2 + this.b ** 2);
+  },
 };
 
-const key = "species";
-
-console.log(pet["age"]); // 1.5
-console.log(pet.age); // 1.5
-
-console.log(pet[key]); // Dog
-console.log(pet["species"]); // Dog
-console.log(pet.key); // undefined
-
-// All keys get "stringified"
-pet[true] = "hello!!!";
-console.log(pet["true"]); // hello!!!
-console.log(pet[true]); // hello!!!
-
-pet.bark = function () {
-  return "WOOF WOOOFF!!";
-};
-console.log(pet.bark()); // WOOF WOOOFF!!
+console.log(myTri.getHypotenuse()); // 5
+// It works end of the day but If I had 10.000 triangles it wouldn't work at all. Do I have to write bunch of myTri, myTri1, myTri2, ... myTri1000 ? lol, HELL NOOOO. So solution is just there, Classes.
