@@ -24,27 +24,25 @@ console.log(myTri.getHypotenuse()); // 5
 // It works end of the day but If I had 10.000 triangles it wouldn't work at all. Do I have to write bunch of myTri, myTri1, myTri2, ... myTri1000 ? lol, HELL NOOOO. So solution is just there, Classes.
 
 class Triangle {
+  constructor(a, b) {
+    if (!Number.isFinite(a) || a <= 0) throw new Error(`Invalid a: ${a}`);
+
+    if (!Number.isFinite(b) || b <= 0) throw new Error(`Invalid b: ${b}`);
+
+    this.a = a;
+    this.b = b;
+  }
   getArea() {
-    return (this.a * this.b) / 2;
+    console.log((this.a * this.b) / 2);
   }
 
   getHypotenuse() {
-    return Math.sqrt(this.a ** 2 + this.b ** 2);
+    console.log(Math.sqrt(this.a ** 2 + this.b ** 2));
   }
-  // this keyword'u classın kendisi olan Triangle'ı işaret etmiyor. Yaratacağım her örneğin kendisini işaret ediyor.
 }
 
-const firstTriangle = new Triangle();
-// this -> firstTriangle
-firstTriangle.a = 3;
-firstTriangle.b = 4;
-console.log(firstTriangle.getHypotenuse()); // 5
+const firstTri = new Triangle(3, 4);
+firstTri.getHypotenuse(); // 5
+firstTri.getArea(); // 6
 
-const secondTriangle = new Triangle();
-// this -> secondTriangle
-secondTriangle.a = 8;
-secondTriangle.b = 15;
-console.log(secondTriangle.getHypotenuse()); // 17
-
-console.log(typeof secondTriangle); // object
-console.log(firstTriangle instanceof Triangle); // true
+const badTri = new Triangle(-4, 10); // Uncaught Error: Invalid a: -4
