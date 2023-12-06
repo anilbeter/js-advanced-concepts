@@ -17,25 +17,19 @@ class Triangle {
   }
 }
 
-// child class -> ShyTriangle
-// parent class -> Triangle
-class ShyTriangle extends Triangle {
-  describe() {
-    return "(runs and hides)";
-  }
-
-  beShy() {
-    return "Too shyyyy";
+class ColorTriangle extends Triangle {
+  constructor(a, b, color) {
+    super(a, b); // call parent constructor with super keyword
+    this.color = color;
   }
 }
 
-const regularTri = new Triangle(5, 12);
+class ColorMoodTriangle extends ColorTriangle {
+  constructor(a, b, color, mood) {
+    super(a, b, color);
+    this.mood = mood;
+  }
+}
 
-const shyTri = new ShyTriangle(3, 4);
-console.log(shyTri); // ShyTriangle {a: 3, b: 4}
-console.log(shyTri.getArea()); // 6
-console.log(shyTri.getHypotenuse()); // 5
-console.log(shyTri.describe()); // (runs and hides)
-console.log(regularTri.describe()); // I am a triangle with area of 30
-// console.log(regularTri.beShy()); // Uncaught TypeError: regularTri.beShy is not a function
-console.log(shyTri.beShy()); // Too shyyyy
+const happyTriangle = new ColorMoodTriangle(3, 4, "red", "happy");
+console.log(happyTriangle); // ColorMoodTriangle {a: 3, b: 4, color: 'red', mood: 'happy'}
