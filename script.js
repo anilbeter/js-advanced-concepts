@@ -1,19 +1,18 @@
+// Static methods
+// ->method is called on a Class, not an object -therefore it cannot have access to individual object attributes
+
 class Cat {
   constructor(name, breed) {
     this.name = name;
     this.breed = breed;
   }
 
-  // static property -> individiual pieces of data are on the class, NOT on instances.
-  static species = "felis catus";
+  static meow() {
+    return "MEOW MEOW MEOW!!";
+  }
 }
 
-const ocean = new Cat("ocean", "yellow");
-console.log(ocean); // Cat {name: 'ocean', breed: 'yellow'}
-
-console.log(Cat.species); // felis catus
-console.log(ocean.species); // undefined
-
-// Also, I can change the static properties from outside the class
-Cat.species = "HATE";
-console.log(Cat.species); // HATE
+const blue = new Cat("blue", "scottish");
+console.log(Cat.meow()); // MEOW MEOW MEOW!!
+// console.log(blue.meow());
+// script.js:17 Uncaught TypeError: blue.meow is not a function
